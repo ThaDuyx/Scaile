@@ -13,14 +13,14 @@ struct ContentView: View {
             
             Group {
                 Text("Sc")
-                    .font(.system(size: 34, weight: .bold, design: .monospaced)) +
+                    .font(.system(size: 26, weight: .bold, design: .monospaced)) +
                 
                 Text("ai")
                     .foregroundColor(.red)
-                    .font(.system(size: 34, weight: .bold, design: .monospaced)) +
+                    .font(.system(size: 26, weight: .bold, design: .monospaced)) +
                 
                 Text("le")
-                    .font(.system(size: 34, weight: .bold, design: .monospaced))
+                    .font(.system(size: 26, weight: .bold, design: .monospaced))
             }
             
             Spacer()
