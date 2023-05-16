@@ -19,8 +19,8 @@
 		6A9E0CC429F84284003A4D19 /* Piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 6A9E0CC329F84284003A4D19 /* Piano.sf2 */; };
 		6AC874B72A1398B5001B7CF0 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 6AC874B62A1398B5001B7CF0 /* RiveRuntime */; };
 		6AC874BB2A1399B4001B7CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC874BA2A1399B4001B7CF0 /* LaunchScreen.storyboard */; };
+		6AC874BE2A13C379001B7CF0 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC874BD2A13C379001B7CF0 /* LaunchView.swift */; };
 		6AC8A33429F70637001CA2A1 /* output.mid in Resources */ = {isa = PBXBuildFile; fileRef = 6A70A7CB29E58FB600DF0E20 /* output.mid */; };
-		6AC8A33629F7086A001CA2A1 /* Amateur.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AC8A33529F7086A001CA2A1 /* Amateur.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,10 +34,10 @@
 		6A70A7CB29E58FB600DF0E20 /* output.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = output.mid; sourceTree = "<group>"; };
 		6A9579B82A12403100EE23C5 /* FlaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaskManager.swift; sourceTree = "<group>"; };
 		6A9579BA2A12458000EE23C5 /* FlaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaskData.swift; sourceTree = "<group>"; };
-		6A9579BC2A12523100EE23C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6A9579BC2A12523100EE23C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A9E0CC329F84284003A4D19 /* Piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Piano.sf2; sourceTree = "<group>"; };
 		6AC874BA2A1399B4001B7CF0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6AC8A33529F7086A001CA2A1 /* Amateur.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Amateur.wav; sourceTree = "<group>"; };
+		6AC874BD2A13C379001B7CF0 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +74,7 @@
 			children = (
 				6A9579BC2A12523100EE23C5 /* Info.plist */,
 				6A70A7B829E57FA800DF0E20 /* ScaileApp.swift */,
+				6AC874BC2A13C107001B7CF0 /* Main */,
 				6A9579B72A123F3500EE23C5 /* Manager */,
 				6A70A7C729E581BE00DF0E20 /* Model */,
 				6A70A7C629E581B700DF0E20 /* View */,
@@ -94,8 +95,8 @@
 		6A70A7C629E581B700DF0E20 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6AC874BD2A13C379001B7CF0 /* LaunchView.swift */,
 				6A70A7BA29E57FA800DF0E20 /* ContentView.swift */,
-				6AC874BA2A1399B4001B7CF0 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -111,7 +112,6 @@
 		6A70A7C829E581DF00DF0E20 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6A9579BD2A12679900EE23C5 /* WAV */,
 				6A9579B62A123F1700EE23C5 /* SoundFont */,
 				6A9579B52A123EF100EE23C5 /* MIDI */,
 				6A70A7BC29E57FA800DF0E20 /* Assets.xcassets */,
@@ -145,12 +145,12 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		6A9579BD2A12679900EE23C5 /* WAV */ = {
+		6AC874BC2A13C107001B7CF0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				6AC8A33529F7086A001CA2A1 /* Amateur.wav */,
+				6AC874BA2A1399B4001B7CF0 /* LaunchScreen.storyboard */,
 			);
-			path = WAV;
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,7 +224,6 @@
 				6A70A7BD29E57FA800DF0E20 /* Assets.xcassets in Resources */,
 				6A9E0CC429F84284003A4D19 /* Piano.sf2 in Resources */,
 				6AC874BB2A1399B4001B7CF0 /* LaunchScreen.storyboard in Resources */,
-				6AC8A33629F7086A001CA2A1 /* Amateur.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +237,7 @@
 				6A0A79F22A12AC76004942DA /* DefaultManager.swift in Sources */,
 				6A70A7BB29E57FA800DF0E20 /* ContentView.swift in Sources */,
 				6A9579B92A12403100EE23C5 /* FlaskManager.swift in Sources */,
+				6AC874BE2A13C379001B7CF0 /* LaunchView.swift in Sources */,
 				6A70A7B929E57FA800DF0E20 /* ScaileApp.swift in Sources */,
 				6A9579BB2A12458000EE23C5 /* FlaskData.swift in Sources */,
 				6A70A7CA29E582A500DF0E20 /* PlayerManager.swift in Sources */,
