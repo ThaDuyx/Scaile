@@ -94,7 +94,7 @@ struct ContentView: View {
                 .padding()
                 
                 if isDownloading {
-                    GeneratingView()
+                    GeneratingView(text: "Generating")
                         .padding()
                 } else {
                     Button {

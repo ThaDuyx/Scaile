@@ -19,10 +19,12 @@ struct ConfigView: View {
     
     var body: some View {
         VStack {
-            
             Spacer()
             
             VStack(spacing: 10) {
+                
+                GeneratingView(text: "Selecting")
+                
                 Group {
                     Text(configManager.selectedKey + " ")
                         .foregroundColor(.black)

@@ -9,7 +9,7 @@ import SwiftUI
 import Shimmer
 
 struct GeneratingView: View {
-    var text: String = "Generating"
+    var text: String
     var color: Color = .red
     @State var dotsCount = 0
     
@@ -61,6 +61,6 @@ struct GeneratingView: View {
 
 struct GeneratingView_Previews: PreviewProvider {
     static var previews: some View {
-        GeneratingView()
+        GeneratingView(text: "Generating")
     }
 }
