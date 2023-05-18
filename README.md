@@ -20,7 +20,6 @@
 
 ### Frameworks
 - AVMIDIPlayer
-- Vision
 
 ### Supporting Files
 - MIDI files (.mid)
