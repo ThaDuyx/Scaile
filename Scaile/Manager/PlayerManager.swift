@@ -10,10 +10,6 @@ import AVFoundation
 
 @MainActor class PlayerManager: NSObject, ObservableObject {
     
-    @Published var isLoaded: Bool = false
-    
-    static let shared = PlayerManager()
-    
     public var midiPlayer: AVMIDIPlayer?
     
     private let fileManager = FileManager.default
@@ -29,7 +25,6 @@ import AVFoundation
     func stopMIDIPlayer() {
         midiPlayer?.stop()
         midiPlayer = nil
-        isLoaded.toggle()
     }
     
     func playMIDI(completion: @escaping () -> Void) {
@@ -42,9 +37,6 @@ import AVFoundation
             guard let midiUrl = fetchMIDIUrl() else { return }
             
             midiPlayer = try AVMIDIPlayer(contentsOf: midiUrl, soundBankURL: soundBankURL)
-            
-            isLoaded.toggle()
-            
             midiPlayer?.prepareToPlay()
             midiPlayer?.play() {
                 self.midiPlayer = nil

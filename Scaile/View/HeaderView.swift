@@ -7,9 +7,11 @@
 
 import SwiftUI
 import SwimplyPlayIndicator
+import Shimmer
 
 struct HeaderView: View {
-    @State var state: SwimplyPlayIndicator.AudioState = .play
+    @State
+    var state: SwimplyPlayIndicator.AudioState = .play
     
     var body: some View {
         HStack {

@@ -14,16 +14,24 @@ struct ContentView: View {
     
     @State var isPlaying: Bool = false
     @State var isDownloading: Bool = false
+    @State private var showingSheet = false
     
     @State var time: Double = 0.0
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    
+
     
     var body: some View {
         ZStack {
             
             VStack {
                 Spacer()
-                if playerManager.isLoaded, let duration = playerManager.midiPlayer?.duration {
+                
+                Spacer()
+                
+                Spacer()
+                
+                if isPlaying, let duration = playerManager.midiPlayer?.duration {
                     ProgressView(value: time, total: duration)
                         .tint(.red)
                         .padding([.leading, .trailing], 100)
@@ -33,6 +41,8 @@ struct ContentView: View {
                             }
                         }
                 }
+                
+                Spacer()
             }
             
             
@@ -53,34 +63,21 @@ struct ContentView: View {
                         }
                     }
                     
-                    // isPlaying.toggle()
-                    isDownloading.toggle()
                 } label: {
-                    Group {
-                        Text(isPlaying ? "Stop ": "Play ")
-                            .foregroundColor(.black)
-                            .font(.system(size: 16, weight: .bold, design: .monospaced)) +
-                        
-                        Text("MIDI")
-                            .foregroundColor(.red)
-                            .font(.system(size: 16, weight: .bold, design: .monospaced))
-                    }
+                    
+                    TextGroupView(firstString: isPlaying ? "Stop " : "Play ", secondString: "MIDI")
                     
                 }.padding()
+            
                 
                 Button {
-                    FlaskManager.shared.getMIDI()
+                    showingSheet.toggle()
                 } label: {
-                    Group {
-                        Text("Get ")
-                            .foregroundColor(.black)
-                            .font(.system(size: 16, weight: .bold, design: .monospaced)) +
-                        
-                        Text("MIDI")
-                            .foregroundColor(.red)
-                            .font(.system(size: 16, weight: .bold, design: .monospaced))
-                    }
-                }.padding()
+                    TextGroupView(firstString: "Configure ", secondString: "MIDI")
+                }
+                .sheet(isPresented: $showingSheet) {
+                    ConfigView()
+                }
                 
                 if isDownloading {
                     GeneratingView()
@@ -94,20 +91,11 @@ struct ContentView: View {
                          }
                          */
                     } label: {
-                        Group {
-                            Text("Generate ")
-                                .foregroundColor(.black)
-                                .font(.system(size: 16, weight: .bold, design: .monospaced))
-                            
-                            Text("MIDI")
-                                .foregroundColor(.red)
-                                .font(.system(size: 16, weight: .bold, design: .monospaced))
-                        }
+                        TextGroupView(firstString: "Generate ", secondString: "MIDI")
                     }.padding()
                 }
                 
-                ProgressView()
-                    .tint(isDownloading ? .red : .clear)
+                // ProgressView().tint(isDownloading ? .red : .clear)
                 
                 Spacer()
                 
