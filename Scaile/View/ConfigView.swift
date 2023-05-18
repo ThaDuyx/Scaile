@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ConfigView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var configManager: ConfigManager
     
     var key = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
     var scale = ["Major", "Minor"]
@@ -23,11 +24,11 @@ struct ConfigView: View {
             
             VStack(spacing: 10) {
                 Group {
-                    Text(selectedKey + " ")
+                    Text(configManager.selectedKey + " ")
                         .foregroundColor(.black)
                         .font(.system(size: 36, weight: .bold, design: .monospaced)) +
                     
-                    Text(selectedScale)
+                    Text(configManager.selectedScale)
                         .foregroundColor(.red)
                         .font(.system(size: 36, weight: .bold, design: .monospaced))
                 }
@@ -42,7 +43,7 @@ struct ConfigView: View {
             HStack(alignment: .center) {
                 TextGroupView(firstString: "Key: ", secondString: "")
                 
-                Picker("Please choose a color", selection: $selectedKey) {
+                Picker("Please choose a color", selection: $configManager.selectedKey) {
                     ForEach(key, id: \.self) {
                         Text($0)
                             .font(.system(size: 16, weight: .bold, design: .monospaced))
@@ -56,7 +57,7 @@ struct ConfigView: View {
             HStack(alignment: .center) {
                 TextGroupView(firstString: "Scale: ", secondString: "")
                 
-                Picker("Please choose a color", selection: $selectedScale) {
+                Picker("Please choose a color", selection: $configManager.selectedScale) {
                     ForEach(scale, id: \.self) {
                         Text($0)
                             .font(.system(size: 16, weight: .bold, design: .monospaced))

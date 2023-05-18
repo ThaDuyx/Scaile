@@ -37,6 +37,7 @@
 		6ABAAECD2A168B1B0044FF38 /* SF-Mono-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ABAAEC12A168B1B0044FF38 /* SF-Mono-RegularItalic.otf */; };
 		6ABAAECE2A168B1B0044FF38 /* SF-Mono-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ABAAEC22A168B1B0044FF38 /* SF-Mono-LightItalic.otf */; };
 		6ABAAECF2A168B1B0044FF38 /* SF-Mono-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ABAAEC32A168B1B0044FF38 /* SF-Mono-Medium.otf */; };
+		6ABAAED12A16B8A20044FF38 /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABAAED02A16B8A20044FF38 /* ConfigManager.swift */; };
 		6AC874B72A1398B5001B7CF0 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 6AC874B62A1398B5001B7CF0 /* RiveRuntime */; };
 		6AC874BB2A1399B4001B7CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC874BA2A1399B4001B7CF0 /* LaunchScreen.storyboard */; };
 		6AC874BE2A13C379001B7CF0 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC874BD2A13C379001B7CF0 /* LaunchView.swift */; };
@@ -75,6 +76,7 @@
 		6ABAAEC12A168B1B0044FF38 /* SF-Mono-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Mono-RegularItalic.otf"; path = "../../../../../../../Library/Fonts/SF-Mono-RegularItalic.otf"; sourceTree = "<group>"; };
 		6ABAAEC22A168B1B0044FF38 /* SF-Mono-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Mono-LightItalic.otf"; path = "../../../../../../../Library/Fonts/SF-Mono-LightItalic.otf"; sourceTree = "<group>"; };
 		6ABAAEC32A168B1B0044FF38 /* SF-Mono-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Mono-Medium.otf"; path = "../../../../../../../Library/Fonts/SF-Mono-Medium.otf"; sourceTree = "<group>"; };
+		6ABAAED02A16B8A20044FF38 /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 		6AC874BA2A1399B4001B7CF0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AC874BD2A13C379001B7CF0 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 				6A9579B82A12403100EE23C5 /* FlaskManager.swift */,
 				6A0A79F12A12AC76004942DA /* DefaultManager.swift */,
 				6A90BDE12A14D0EA0089178A /* StateManager.swift */,
+				6ABAAED02A16B8A20044FF38 /* ConfigManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				6A70A7BB29E57FA800DF0E20 /* ContentView.swift in Sources */,
 				6AB45BBD2A165D8F0052DD45 /* TextGroupView.swift in Sources */,
 				6A9579B92A12403100EE23C5 /* FlaskManager.swift in Sources */,
+				6ABAAED12A16B8A20044FF38 /* ConfigManager.swift in Sources */,
 				6AC874BE2A13C379001B7CF0 /* LaunchView.swift in Sources */,
 				6AB45BBF2A1661BC0052DD45 /* TimerView.swift in Sources */,
 				6AB45BBB2A164D490052DD45 /* HeaderView.swift in Sources */,

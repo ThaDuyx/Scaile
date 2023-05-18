@@ -11,6 +11,7 @@ import Shimmer
 
 struct ContentView: View {
     @StateObject var playerManager = PlayerManager()
+    @StateObject var configManager = ConfigManager()
     
     @State var isPlaying: Bool = false
     @State var isDownloading: Bool = false
@@ -51,6 +52,20 @@ struct ContentView: View {
                 
                 Spacer()
                 
+                TextGroupView(firstString: "Selected ", secondString: "Scale:")
+                
+                Group {
+                    Text(configManager.selectedKey + " ")
+                        .foregroundColor(.black)
+                        .font(.system(size: 36, weight: .bold, design: .monospaced)) +
+                    
+                    Text(configManager.selectedScale)
+                        .foregroundColor(.red)
+                        .font(.system(size: 36, weight: .bold, design: .monospaced))
+                }
+                
+                Spacer()
+                
                 Button {
                     if playerManager.isMIDIPlayerPlaying() {
                         playerManager.stopMIDIPlayer()
@@ -64,20 +79,19 @@ struct ContentView: View {
                     }
                     
                 } label: {
-                    
                     TextGroupView(firstString: isPlaying ? "Stop " : "Play ", secondString: "MIDI")
-                    
                 }.padding()
-            
                 
                 Button {
                     showingSheet.toggle()
                 } label: {
-                    TextGroupView(firstString: "Configure ", secondString: "MIDI")
+                    TextGroupView(firstString: "Select ", secondString: "MIDI")
                 }
                 .sheet(isPresented: $showingSheet) {
                     ConfigView()
+                        .environmentObject(configManager)
                 }
+                .padding()
                 
                 if isDownloading {
                     GeneratingView()
@@ -92,7 +106,8 @@ struct ContentView: View {
                          */
                     } label: {
                         TextGroupView(firstString: "Generate ", secondString: "MIDI")
-                    }.padding()
+                    }
+                    .padding()
                 }
                 
                 // ProgressView().tint(isDownloading ? .red : .clear)
