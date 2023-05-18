@@ -7,3 +7,21 @@
 > on mobile device and music with the help of computervision.
 
  - Developed in Swift
+
+  
+## Purpose of the project
+
+## How To Use
+
+## Tools
+
+### Software
+- xCode
+
+### Frameworks
+- AVMIDIPlayer
+- Vision
+
+### Supporting Files
+- MIDI files (.mid)
+- Sound Font (.sf2)
