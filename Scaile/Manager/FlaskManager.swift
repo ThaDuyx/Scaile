@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FlaskManager: NSObject {
+class FlaskManager: NSObject, ObservableObject {
     
     static let shared = FlaskManager()
     
@@ -40,7 +40,7 @@ class FlaskManager: NSObject {
         }.resume()
     }
     
-    func generateAndFetchMIDI() {
+    func generateAndFetchMIDI(completion: @escaping () -> Void) {
         guard let url = URL(string: "http://127.0.0.1:5500/generate") else {
             print("No URL returned")
             return
@@ -66,6 +66,8 @@ class FlaskManager: NSObject {
                 DefaultManager.shared.midiLocation = destinationPath
                 
                 print("MIDI file successfully downloaded to path \(destinationPath)")
+                
+                completion()
             } catch {
                 print("Error downloading file \(error.localizedDescription)")
             }

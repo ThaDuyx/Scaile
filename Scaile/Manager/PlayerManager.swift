@@ -8,11 +8,13 @@
 import Foundation
 import AVFoundation
 
-class PlayerManager: NSObject {
+@MainActor class PlayerManager: NSObject, ObservableObject {
+    
+    @Published var isLoaded: Bool = false
     
     static let shared = PlayerManager()
     
-    private var midiPlayer: AVMIDIPlayer?
+    public var midiPlayer: AVMIDIPlayer?
     
     private let fileManager = FileManager.default
     
@@ -27,9 +29,10 @@ class PlayerManager: NSObject {
     func stopMIDIPlayer() {
         midiPlayer?.stop()
         midiPlayer = nil
+        isLoaded.toggle()
     }
     
-    func playMIDI() {
+    func playMIDI(completion: @escaping () -> Void) {
         guard let soundBankURL  = Bundle.main.url(forResource: "Piano", withExtension: "sf2") else { return }
         
         // - Commented but sometimes used for test purposes
@@ -39,9 +42,13 @@ class PlayerManager: NSObject {
             guard let midiUrl = fetchMIDIUrl() else { return }
             
             midiPlayer = try AVMIDIPlayer(contentsOf: midiUrl, soundBankURL: soundBankURL)
+            
+            isLoaded.toggle()
+            
             midiPlayer?.prepareToPlay()
             midiPlayer?.play() {
                 self.midiPlayer = nil
+                completion()
             }
         } catch {
             print("Failed to load the MIDI file or soundbank \(error.localizedDescription)")
