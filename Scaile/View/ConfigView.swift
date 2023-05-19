@@ -12,7 +12,7 @@ struct ConfigView: View {
     @EnvironmentObject var configManager: ConfigManager
     
     var key = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
-    var scale = ["Major", "Minor"]
+    var scale = ["Random", "Major", "Minor"]
     
     @State private var selectedKey = "C"
     @State private var selectedScale = "Major"
@@ -25,14 +25,20 @@ struct ConfigView: View {
                 
                 GeneratingView(text: "Selecting")
                 
-                Group {
-                    Text(configManager.selectedKey + " ")
-                        .foregroundColor(.black)
-                        .font(.system(size: 36, weight: .bold, design: .monospaced)) +
-                    
+                if configManager.selectedScale == "Random" {
                     Text(configManager.selectedScale)
                         .foregroundColor(.red)
                         .font(.system(size: 36, weight: .bold, design: .monospaced))
+                } else {
+                    Group {
+                        Text(configManager.selectedKey + " ")
+                            .foregroundColor(.black)
+                            .font(.system(size: 36, weight: .bold, design: .monospaced)) +
+                        
+                        Text(configManager.selectedScale)
+                            .foregroundColor(.red)
+                            .font(.system(size: 36, weight: .bold, design: .monospaced))
+                    }
                 }
                 
                 Rectangle()
@@ -76,6 +82,12 @@ struct ConfigView: View {
                 dismiss()
             } label: {
                 TextGroupView(firstString: "Close ", secondString: "Selection")
+                    .frame(width: 150)
+                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.black, lineWidth: 2)
+                        )
             }
             .padding()
             

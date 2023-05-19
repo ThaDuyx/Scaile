@@ -13,104 +13,69 @@ struct ContentView: View {
     @StateObject var playerManager = PlayerManager()
     @StateObject var configManager = ConfigManager()
     
-    @State var isPlaying: Bool = false
     @State var isDownloading: Bool = false
     @State private var showingSheet = false
     
-    @State var time: Double = 0.0
-    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-    
-
-    
     var body: some View {
         ZStack {
-            
-            VStack {
-                Spacer()
-                
-                Spacer()
-                
-                Spacer()
-                
-                if isPlaying, let duration = playerManager.midiPlayer?.duration {
-                    ProgressView(value: time, total: duration)
-                        .tint(.red)
-                        .padding([.leading, .trailing], 100)
-                        .onReceive(timer) { _ in
-                            if time < duration {
-                                time += 0.1
-                            }
-                        }
-                }
-                
-                Spacer()
-            }
-            
-            
             VStack {
                 HeaderView()
                 
                 Spacer()
                 
-                TextGroupView(firstString: "Selected ", secondString: "Scale:")
-                
-                Group {
-                    Text(configManager.selectedKey + " ")
-                        .foregroundColor(.black)
-                        .font(.system(size: 36, weight: .bold, design: .monospaced)) +
+                VStack(spacing: 10) {
+                    TextGroupView(firstString: "Selected ", secondString: "Scale:")
                     
-                    Text(configManager.selectedScale)
-                        .foregroundColor(.red)
-                        .font(.system(size: 36, weight: .bold, design: .monospaced))
+                    SelectorView(firstString: configManager.selectedKey, secondString: configManager.selectedScale)
                 }
                 
                 Spacer()
+
+                PlayerView().environmentObject(playerManager)
                 
-                Button {
-                    if playerManager.isMIDIPlayerPlaying() {
-                        playerManager.stopMIDIPlayer()
-                        time = 0.0
-                    } else {
-                        isPlaying.toggle()
-                        playerManager.playMIDI() {
-                            time = 0.0
-                            isPlaying.toggle()
-                        }
-                    }
-                    
-                } label: {
-                    TextGroupView(firstString: isPlaying ? "Stop " : "Play ", secondString: "MIDI")
-                }.padding()
+                Spacer()
                 
-                Button {
-                    showingSheet.toggle()
-                } label: {
-                    TextGroupView(firstString: "Select ", secondString: "MIDI")
-                }
-                .sheet(isPresented: $showingSheet) {
-                    ConfigView()
-                        .environmentObject(configManager)
-                }
-                .padding()
-                
-                if isDownloading {
-                    GeneratingView(text: "Generating")
-                        .padding()
-                } else {
+                VStack(spacing: 20) {
                     Button {
-                        isDownloading.toggle()
-                        /*
-                         FlaskManager.shared.generateAndFetchMIDI() {
-                         isDownloading = false
-                         }
-                         */
+                        showingSheet.toggle()
                     } label: {
-                        TextGroupView(firstString: "Generate ", secondString: "MIDI")
+                        TextGroupView(firstString: "Select ", secondString: "MIDI")
                     }
-                    .padding()
+                    .sheet(isPresented: $showingSheet) {
+                        ConfigView().environmentObject(configManager)
+                    }
+                    .frame(width: 150)
+                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.black, lineWidth: 2)
+                        )
+                    
+                    if isDownloading {
+                        GeneratingView(text: "Generating")
+                            .frame(width: 150)
+                            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                            .overlay(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(.black, lineWidth: 2)
+                                )
+                    } else {
+                        Button {
+                            isDownloading.toggle()
+                             FlaskManager.shared.generateAndFetchMIDI() {
+                                 isDownloading = false
+                             }
+                        } label: {
+                            TextGroupView(firstString: "Generate ", secondString: "MIDI")
+                        }
+                        .frame(width: 150)
+                        .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(.black, lineWidth: 2)
+                            )
+                    }
                 }
-                
-                // ProgressView().tint(isDownloading ? .red : .clear)
                 
                 Spacer()
                 
@@ -118,3 +83,15 @@ struct ContentView: View {
         }
     }
 }
+
+/*
+if isPlaying, let duration = playerManager.midiPlayer?.duration {
+    ProgressView(value: time, total: duration)
+        .tint(.red)
+        .padding([.leading, .trailing], 100)
+        .onReceive(timer) { _ in
+            if time < duration {
+                time += 0.1
+            }
+        }
+}*/

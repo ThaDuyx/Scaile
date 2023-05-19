@@ -14,21 +14,37 @@ struct HeaderView: View {
     var state: SwimplyPlayIndicator.AudioState = .play
     
     var body: some View {
-        HStack {
-            Group {
-                Text("Sc")
-                    .font(.system(size: 26, weight: .bold, design: .monospaced)) +
+        ZStack {
+            HStack {
+                Spacer()
                 
-                Text("ai")
-                    .foregroundColor(.red)
-                    .font(.system(size: 26, weight: .bold, design: .monospaced)) +
-                
-                Text("le")
-                    .font(.system(size: 26, weight: .bold, design: .monospaced))
+                Button {
+                    
+                } label: {
+                    Image(systemName: "square.and.arrow.down")
+                        .resizable()
+                        .frame(width: 20, height: 25)
+                        .foregroundColor(.red)
+                        .padding()
+                }
             }
             
-            SwimplyPlayIndicator(state: $state, count: 3, color: Color.red, style: .modern)
-                .frame(width: 18, height: 18)
+            HStack {
+                Group {
+                    Text("Sc")
+                        .font(.system(size: 26, weight: .bold, design: .monospaced)) +
+                    
+                    Text("ai")
+                        .foregroundColor(.red)
+                        .font(.system(size: 26, weight: .bold, design: .monospaced)) +
+                    
+                    Text("le")
+                        .font(.system(size: 26, weight: .bold, design: .monospaced))
+                }
+                
+                SwimplyPlayIndicator(state: $state, count: 3, color: Color.red, style: .modern)
+                    .frame(width: 18, height: 18)
+            }
         }
     }
 }
