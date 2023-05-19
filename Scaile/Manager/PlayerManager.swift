@@ -11,10 +11,12 @@ import AVFoundation
 class PlayerManager: NSObject, ObservableObject {
     @Published var currentTime: Double = 0.0
     @Published var duration: Double = 1.0
+    @Published var urls: [URL] = []
     
+    public var selectedMIDI: String?
     public var player: AVMIDIPlayer?
-    private let fileManager = FileManager.default
     
+    private let fileManager = FileManager.default
     private var timer: Timer?
     
     // MARK: - Midi player functionality
@@ -80,5 +82,14 @@ class PlayerManager: NSObject, ObservableObject {
         guard fileManager.fileExists(atPath: midiUrl.path) else { return nil }
         
         return midiUrl
+    }
+    
+    func getContentsOfDirectory() {
+        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        do {
+            urls = try fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+        } catch {
+            print(error)
+        }
     }
 }

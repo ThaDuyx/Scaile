@@ -83,7 +83,7 @@ struct ContentView: View {
                         TextGroupView(firstString: "Show ", secondString: "MIDI")
                     }
                     .sheet(isPresented: $showingPlaylist) {
-                        PlaylistView()
+                        PlaylistView().environmentObject(playerManager)
                     }
                     .frame(width: 150)
                     .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
@@ -91,11 +91,19 @@ struct ContentView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(.black, lineWidth: 2)
                         )
+                    
+                    Button {
+                        print(playerManager.selectedMIDI)
+                    } label: {
+                        Text("print")
+                    }
                 }
                 
                 Spacer()
                 
             }.padding()
+        }.onAppear {
+            playerManager.getContentsOfDirectory()
         }
     }
 }
