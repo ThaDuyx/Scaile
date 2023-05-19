@@ -7,13 +7,19 @@
 
 import Foundation
 import AVFoundation
+import SwiftUI
 
 class PlayerManager: NSObject, ObservableObject {
     @Published var currentTime: Double = 0.0
     @Published var duration: Double = 1.0
     @Published var urls: [URL] = []
     
-    public var selectedMIDI: String?
+    override init() {
+        super.init()
+        self.getContentsOfDirectory()
+    }
+    
+    public var selectedURL: URL?
     public var player: AVMIDIPlayer?
     
     private let fileManager = FileManager.default
@@ -77,7 +83,9 @@ class PlayerManager: NSObject, ObservableObject {
     private func fetchMIDIUrl() -> URL? {
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         
-        let midiUrl = documentDirectory.appendingPathComponent("chord.mid")
+        guard let selectedURL = selectedURL else { return nil }
+        
+        let midiUrl = documentDirectory.appendingPathComponent(selectedURL.lastPathComponent)
         
         guard fileManager.fileExists(atPath: midiUrl.path) else { return nil }
         
@@ -88,6 +96,10 @@ class PlayerManager: NSObject, ObservableObject {
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         do {
             urls = try fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+            
+            if !urls.isEmpty {
+                selectedURL = urls[0]
+            }
         } catch {
             print(error)
         }

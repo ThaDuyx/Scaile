@@ -10,6 +10,8 @@ import SwiftUI
 struct PlaylistView: View {
     @EnvironmentObject var playerManager: PlayerManager
     @State var selected: URL?
+    var midURL: URL?
+    
     var body: some View {
         VStack {
             GeneratingView(text: "Choosing")
@@ -21,7 +23,7 @@ struct PlaylistView: View {
                     .font(.system(size: 16, weight: .bold, design: .monospaced))
             }
             .onChange(of: selected) { newValue in
-                playerManager.selectedMIDI = newValue?.lastPathComponent 
+                playerManager.selectedURL = newValue
             }
         }
     }
@@ -29,6 +31,6 @@ struct PlaylistView: View {
 
 struct PlaylistView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaylistView()
+        PlaylistView(selected: URL(string: "www.hello.world")!)
     }
 }

@@ -40,10 +40,6 @@ class FlaskManager: NSObject, ObservableObject {
         }.resume()
     }
     
-    func items() {
-        
-    }
-    
     func generateAndFetchMIDI(completion: @escaping () -> Void) {
         guard let url = URL(string: "http://127.0.0.1:5500/generate") else {
             print("No URL returned")
