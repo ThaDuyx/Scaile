@@ -40,6 +40,10 @@ class FlaskManager: NSObject, ObservableObject {
         }.resume()
     }
     
+    func items() {
+        
+    }
+    
     func generateAndFetchMIDI(completion: @escaping () -> Void) {
         guard let url = URL(string: "http://127.0.0.1:5500/generate") else {
             print("No URL returned")
@@ -53,7 +57,7 @@ class FlaskManager: NSObject, ObservableObject {
             }
             
             let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-            let destinationPath = documentsPath.appendingPathComponent("chord.mid")
+            let destinationPath = documentsPath.appendingPathComponent("chord.mid(1)")
             
             guard let fileUrl else {
                 print("ERROR: Invalid data")

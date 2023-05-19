@@ -58,7 +58,7 @@ struct PlayerView: View {
                     }
                 }
         }
-        .frame(width: 200)
+        .frame(width: 190)
         .padding()
     }
 }

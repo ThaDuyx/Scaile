@@ -10,23 +10,19 @@ import SwimplyPlayIndicator
 import Shimmer
 
 struct HeaderView: View {
-    @State
-    var state: SwimplyPlayIndicator.AudioState = .play
+    @State var state: SwimplyPlayIndicator.AudioState = .play
+    private let url = URL(string: "https://www.appcoda.com")!
     
     var body: some View {
         ZStack {
             HStack {
+                
                 Spacer()
                 
-                Button {
-                    
-                } label: {
-                    Image(systemName: "square.and.arrow.down")
-                        .resizable()
-                        .frame(width: 20, height: 25)
-                        .foregroundColor(.red)
-                        .padding()
-                }
+                ShareLink("", item: url)
+                    .tint(.red)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
+                
             }
             
             HStack {

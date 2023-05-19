@@ -14,7 +14,8 @@ struct ContentView: View {
     @StateObject var configManager = ConfigManager()
     
     @State var isDownloading: Bool = false
-    @State private var showingSheet = false
+    @State private var showingSheet: Bool = false
+    @State private var showingPlaylist: Bool = false
     
     var body: some View {
         ZStack {
@@ -75,6 +76,21 @@ struct ContentView: View {
                                     .stroke(.black, lineWidth: 2)
                             )
                     }
+                    
+                    Button {
+                        showingPlaylist.toggle()
+                    } label: {
+                        TextGroupView(firstString: "Show ", secondString: "MIDI")
+                    }
+                    .sheet(isPresented: $showingPlaylist) {
+                        PlaylistView()
+                    }
+                    .frame(width: 150)
+                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.black, lineWidth: 2)
+                        )
                 }
                 
                 Spacer()
@@ -83,15 +99,3 @@ struct ContentView: View {
         }
     }
 }
-
-/*
-if isPlaying, let duration = playerManager.midiPlayer?.duration {
-    ProgressView(value: time, total: duration)
-        .tint(.red)
-        .padding([.leading, .trailing], 100)
-        .onReceive(timer) { _ in
-            if time < duration {
-                time += 0.1
-            }
-        }
-}*/
