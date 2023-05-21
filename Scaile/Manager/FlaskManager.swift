@@ -40,7 +40,7 @@ class FlaskManager: NSObject, ObservableObject {
         }.resume()
     }
     
-    func generateAndFetchMIDI(completion: @escaping () -> Void) {
+    func generateAndFetchMIDI(urls: [URL], completion: @escaping () -> Void) {
         guard let url = URL(string: "http://127.0.0.1:5500/generate") else {
             print("No URL returned")
             return
@@ -53,7 +53,7 @@ class FlaskManager: NSObject, ObservableObject {
             }
             
             let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-            let destinationPath = documentsPath.appendingPathComponent("chord.mid(1)")
+            let destinationPath = self.getFileName(documentPath: documentsPath, urls: urls)
             
             guard let fileUrl else {
                 print("ERROR: Invalid data")
@@ -137,29 +137,41 @@ class FlaskManager: NSObject, ObservableObject {
         task.resume()
     }
     
-    func getMIDIWithArgs(scale: String) {
-        guard let baseUrl = URL(string: "http://127.0.0.1:5500/generate") else {
+    func getMIDIWithArgs(key: String, scale: String, urls: [URL], completion: @escaping () -> Void) {
+        guard let baseUrl = URL(string: "http://127.0.0.1:5500/download") else {
             print("No URL returned")
             return
         }
+
+        var request = URLRequest(url: baseUrl)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let parameters = ["key": key, "scale": scale]
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: [])
+            request.httpBody = jsonData
+        } catch {
+            print("Error creating JSON data: \(error)")
+            return
+        }
         
-        var components = URLComponents(url: baseUrl, resolvingAgainstBaseURL: true)!
-        components.queryItems = [
-            URLQueryItem(name: "scale", value: scale)
-        ]
-        guard let url = components.url else { fatalError("Failed to create URL") }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.downloadTask(with: url) { fileUrl, response, error in
+        let task = URLSession.shared.downloadTask(with: request) { fileUrl, response, error in
             guard error == nil else {
                 print("Error: \(String(describing: error?.localizedDescription))")
                 return
             }
             
             let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-            let destinationPath = documentsPath.appendingPathComponent("file.mid")
+            
+            var name = ""
+            if scale == "Random" {
+                name = scale
+            } else {
+                name = key + " " + scale
+            }
+            
+            let destinationPath = documentsPath.appendingPathComponent(name + " " + urls.count.formatted())
             
             guard let fileUrl else {
                 print("ERROR: Invalid data")
@@ -171,6 +183,8 @@ class FlaskManager: NSObject, ObservableObject {
                 
                 DefaultManager.shared.midiLocation = destinationPath
                 
+                completion()
+                
                 print("MIDI file successfully downloaded to path \(destinationPath)")
             } catch {
                 print("Error downloading file \(error.localizedDescription)")
@@ -178,5 +192,13 @@ class FlaskManager: NSObject, ObservableObject {
         }
         
         task.resume()
+    }
+    
+    func getFileName(documentPath: NSString, urls: [URL]) -> String {
+        if urls.isEmpty {
+            return documentPath.appendingPathComponent("chord 1.mid")
+        } else {
+            return documentPath.appendingPathComponent("chord \(urls.count + 1).mid")
+        }
     }
 }

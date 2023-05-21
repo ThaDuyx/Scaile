@@ -25,13 +25,18 @@ struct ContentView: View {
                 Spacer()
                 
                 VStack(spacing: 10) {
+                    
                     TextGroupView(firstString: "Selected ", secondString: "Scale:")
                     
-                    SelectorView(firstString: configManager.selectedKey, secondString: configManager.selectedScale)
+                    if isDownloading {
+                        SelectorGenerateView(text: "Generating")
+                    } else {
+                        SelectorView(firstString: configManager.selectedKey, secondString: configManager.selectedScale)
+                    }
                 }
                 
                 Spacer()
-
+                
                 PlayerView().environmentObject(playerManager)
                 
                 Spacer()
@@ -48,33 +53,34 @@ struct ContentView: View {
                     .frame(width: 150)
                     .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
                     .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(.black, lineWidth: 2)
-                        )
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(.black, lineWidth: 2)
+                    )
                     
                     if isDownloading {
-                        GeneratingView(text: "Generating")
+                        ProgressView()
+                            .tint(.red)
                             .frame(width: 150)
                             .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
                             .overlay(
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .stroke(.black, lineWidth: 2)
-                                )
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(.black, lineWidth: 2)
+                            )
                     } else {
                         Button {
                             isDownloading.toggle()
-                             FlaskManager.shared.generateAndFetchMIDI() {
-                                 isDownloading = false
-                             }
+                            FlaskManager.shared.getMIDIWithArgs(key: configManager.selectedKey, scale: configManager.selectedScale, urls: playerManager.urls) {
+                                isDownloading = false
+                            }
                         } label: {
                             TextGroupView(firstString: "Generate ", secondString: "MIDI")
                         }
                         .frame(width: 150)
                         .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
                         .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(.black, lineWidth: 2)
-                            )
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.black, lineWidth: 2)
+                        )
                     }
                     
                     Button {
@@ -88,18 +94,14 @@ struct ContentView: View {
                     .frame(width: 150)
                     .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
                     .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(.black, lineWidth: 2)
-                        )
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(.black, lineWidth: 2)
+                    )
                 }
                 
                 Spacer()
                 
             }.padding()
         }
-        /*
-        .onAppear {
-            playerManager.getContentsOfDirectory()
-        }*/
     }
 }

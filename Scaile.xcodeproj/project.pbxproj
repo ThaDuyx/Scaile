@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A0A79F22A12AC76004942DA /* DefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0A79F12A12AC76004942DA /* DefaultManager.swift */; };
+		6A4718582A19333600E468EB /* SelectorGenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4718572A19333600E468EB /* SelectorGenerateView.swift */; };
 		6A5E34F429E89CAE00DC0686 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6A5E34F329E89CAE00DC0686 /* PythonKit */; };
 		6A70A7B929E57FA800DF0E20 /* ScaileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70A7B829E57FA800DF0E20 /* ScaileApp.swift */; };
 		6A70A7BB29E57FA800DF0E20 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70A7BA29E57FA800DF0E20 /* ContentView.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		6A0A79F12A12AC76004942DA /* DefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultManager.swift; sourceTree = "<group>"; };
+		6A4718572A19333600E468EB /* SelectorGenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorGenerateView.swift; sourceTree = "<group>"; };
 		6A70A7B529E57FA800DF0E20 /* Scaile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scaile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A70A7B829E57FA800DF0E20 /* ScaileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaileApp.swift; sourceTree = "<group>"; };
 		6A70A7BA29E57FA800DF0E20 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				6AB45BC02A166F400052DD45 /* ConfigView.swift */,
 				6AE15C302A17734F003D135A /* SelectorView.swift */,
 				6AE15C352A17B68E003D135A /* PlaylistView.swift */,
+				6A4718572A19333600E468EB /* SelectorGenerateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				6AE15C362A17B68E003D135A /* PlaylistView.swift in Sources */,
 				6A70A7B929E57FA800DF0E20 /* ScaileApp.swift in Sources */,
 				6A9579BB2A12458000EE23C5 /* FlaskData.swift in Sources */,
+				6A4718582A19333600E468EB /* SelectorGenerateView.swift in Sources */,
 				6AB45BC12A166F400052DD45 /* ConfigView.swift in Sources */,
 				6A70A7CA29E582A500DF0E20 /* PlayerManager.swift in Sources */,
 				6AE15C312A17734F003D135A /* SelectorView.swift in Sources */,

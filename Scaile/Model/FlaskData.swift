@@ -12,3 +12,8 @@ struct FlaskData: Codable {
     let description: String
     let version: String
 }
+
+struct FlaskRequest: Codable {
+    let key: String
+    let scale: String
+}
