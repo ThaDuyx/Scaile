@@ -57,6 +57,21 @@ struct ContentView: View {
                             .stroke(.black, lineWidth: 2)
                     )
                     
+                    Button {
+                        showingPlaylist.toggle()
+                    } label: {
+                        TextGroupView(firstString: "Show ", secondString: "MIDI")
+                    }
+                    .sheet(isPresented: $showingPlaylist) {
+                        PlaylistView(selected: playerManager.selectedURL, midURL: playerManager.selectedURL).environmentObject(playerManager)
+                    }
+                    .frame(width: 150)
+                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(.black, lineWidth: 2)
+                    )
+                    
                     if isDownloading {
                         ProgressView()
                             .tint(.red)
@@ -82,21 +97,6 @@ struct ContentView: View {
                                 .stroke(.black, lineWidth: 2)
                         )
                     }
-                    
-                    Button {
-                        showingPlaylist.toggle()
-                    } label: {
-                        TextGroupView(firstString: "Show ", secondString: "MIDI")
-                    }
-                    .sheet(isPresented: $showingPlaylist) {
-                        PlaylistView(selected: playerManager.selectedURL, midURL: playerManager.selectedURL).environmentObject(playerManager)
-                    }
-                    .frame(width: 150)
-                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(.black, lineWidth: 2)
-                    )
                 }
                 
                 Spacer()
