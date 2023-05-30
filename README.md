@@ -12,6 +12,11 @@
   - The purpose of the project was to explore how music would be generated with artificial intelligence. In this case MIDI file generation was chosen. The main goal for the project was a creative assistant for musicians or who wants another way of getting out of the infamous phenomenon of creatives called "the writer's block". This means the state of mind where it hard to get in the creative process. 
   
 ## How To Use
+  - Choose a harmonic scale like D Minor.
+  - Generate a chord progression.
+  - Play it back through the device.
+  - Export the chord progression in MIDI format on your macOS device.
+  - Import to your favourite DAW
 
 ## Tools
 
