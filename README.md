@@ -36,7 +36,7 @@
 - URLSession
 
 ### Backend
-- LSTM Neural Network generator
+- LSTM Neural Network generator: 
 https://github.com/ThaDuyx/ScaileAI
 
 ### Supporting Files
