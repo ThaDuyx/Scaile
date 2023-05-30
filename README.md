@@ -14,7 +14,7 @@
 ## How To Use
 <p align="center">
     <a href="http://www.youtube.com/watch?feature=player_embedded&v=TEudhz0Tdts" target="_blank">
-    <img src="http://img.youtube.com/vi/TEudhz0Tdts/mqdefault.jpg" alt="Watch the video" width="400" height="180" border="10" />
+    <img src="http://img.youtube.com/vi/TEudhz0Tdts/mqdefault.jpg" alt="Watch the video" width="400" height="220" border="10" />
     </a>
 </p>
   
