@@ -35,6 +35,10 @@
 - SwiftUI
 - URLSession
 
+### Backend
+- LSTM Neural Network generator
+https://github.com/ThaDuyx/ScaileAI
+
 ### Supporting Files
 - MIDI files (.mid)
 - Sound Font (.sf2)
