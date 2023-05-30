@@ -12,9 +12,9 @@
   - The purpose of the project was to explore how music would be generated with artificial intelligence. In this case MIDI file generation was chosen. The main goal for the project was a creative assistant for musicians or who wants another way of getting out of the infamous phenomenon of creatives called "the writer's block". This means the state of mind where it hard to get in the creative process. 
   
 ## How To Use
-  <p align="center">
-    [![IMAGE ALT TEXT](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE "Video Title")
-  </p>
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=TEudhz0Tdts" target="_blank">
+ <img src="http://img.youtube.com/vi/TEudhz0Tdts/mqdefault.jpg" alt="Watch the video" width="240" height="180" border="10" />
+  </a>
   
   - Choose a harmonic scale like D Minor.
   - Generate a chord progression.
