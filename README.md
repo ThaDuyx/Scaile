@@ -25,6 +25,8 @@
 
 ### Frameworks
 - AVMIDIPlayer
+- FileManager
+- SwiftUI
 
 ### Supporting Files
 - MIDI files (.mid)
