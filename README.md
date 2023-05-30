@@ -33,6 +33,7 @@
 - AVMIDIPlayer
 - FileManager
 - SwiftUI
+- URLSession
 
 ### Supporting Files
 - MIDI files (.mid)
