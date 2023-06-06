@@ -85,7 +85,7 @@ struct ContentView: View {
                         Button {
                             isDownloading.toggle()
                             FlaskManager.shared.getMIDIWithArgs(key: configManager.selectedKey, scale: configManager.selectedScale, urls: playerManager.urls) {
-                                isDownloading = false
+                                isDownloading.toggle()
                             }
                         } label: {
                             TextGroupView(firstString: "Generate ", secondString: "MIDI")
