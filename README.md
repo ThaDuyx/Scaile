@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="100" src="https://github.com/ThaDuyx/Scaile/blob/main/Scaile/Supporting%20Files/Assets.xcassets/ScaileAppStore.imageset/ScaileAppStore.png?raw=true"
+  <img width="200" src="https://github.com/ThaDuyx/Scaile/blob/main/Scaile/Supporting%20Files/Assets.xcassets/ScaileAppStore.imageset/ScaileAppStore.png?raw=true"
 </p>
 
 # Scaile
