@@ -8,6 +8,8 @@
 
  - Developed in Swift
 
+## AAU
+Developed for the [Sonic Interaction Design](https://moduler.aau.dk/course/2023-2024/MSNSMCM2201) course.
 ## Purpose of the project
   - The purpose of the project was to explore how music would be generated with artificial intelligence. In this case MIDI file generation was chosen. The main goal for the project was a creative assistant for musicians or who wants another way of getting out of the infamous phenomenon of creatives called "the writer's block". This means the state of mind where it hard to get in the creative process. 
   
